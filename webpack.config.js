@@ -8,12 +8,12 @@ module.exports = {
 		path: path.join(__dirname, '/dist'),
 		filename: 'bundle.js'
 	},
-	// plugins: [
-	// 	new webpack.optimize.UglifyJsPlugin({
-	// 		minimize: true,
-	// 		warnings: false
-	// 	})
-	// ],
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin({
+			minimize: true,
+			warnings: false
+		})
+	],
 	resolve: {
 		extensions: ['', '.js', '.jsx']
 	},
@@ -25,8 +25,9 @@ module.exports = {
 			exclude: [nodeModulesPath]
 		}, ],
 		loaders: [{
-			test: /\.js|jsx$/,
-			loaders: ['babel']
+			test: /\.(js|jsx)$/,  
+			loaders: ['react-hot', 'babel'], 
+			exclude: [nodeModulesPath]
 		}]
 	},
 	eslint: {
