@@ -21,6 +21,7 @@ export  class AppLeftNavBar extends React.Component {
   render() {
     const homeLink=<Link to='/Home' />;
     const contactLink=<Link to="/Contact" />;
+    
     return (
       <div> 
         <LeftNav
@@ -29,8 +30,8 @@ export  class AppLeftNavBar extends React.Component {
           open={this.props.open}
           onRequestChange={this.props.handleNavbarOpen}
         >
-          <MenuItem  leftIcon={<Home />}  containerElement={homeLink} onTouchTap={this.handleMenuTap}>Home</MenuItem>
-          <MenuItem  leftIcon={<Contact />} containerElement={contactLink} onTouchTap={this.handleMenuTap}>Contact</MenuItem>
+          <MenuItem  leftIcon={<Home />}  containerElement={<Link to="/Home" />} onTouchTap={this.handleMenuTap}>Home</MenuItem>
+          <MenuItem leftIcon={<Contact />}  containerElement={<Link to="/Contact" />} onTouchTap={this.handleMenuTap}>Contact</MenuItem>
         </LeftNav>
       </div>
     );
