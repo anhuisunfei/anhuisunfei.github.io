@@ -1,7 +1,10 @@
 import React from 'react';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import Home from 'material-ui/lib/svg-icons/action/home';
+import Contact from 'material-ui/lib/svg-icons/communication/contacts';
 import RaisedButton from 'material-ui/lib/raised-button';
+import {Link} from 'react-router';
 
 export  class AppLeftNavBar extends React.Component {
 
@@ -12,10 +15,12 @@ export  class AppLeftNavBar extends React.Component {
   handleMenuTap=()=>{
     setTimeout(()=>{ 
       this.props.handleNavbarClose();
-    },300);
+    },150);
   };
 
   render() {
+    const homeLink=<Link to='Home' />;
+    const contactLink=<Link to="Contact" />;
     return (
       <div> 
         <LeftNav
@@ -24,8 +29,8 @@ export  class AppLeftNavBar extends React.Component {
           open={this.props.open}
           onRequestChange={this.props.handleNavbarOpen}
         >
-          <MenuItem onTouchTap={this.handleMenuTap}>Home</MenuItem>
-          <MenuItem onTouchTap={this.handleMenuTap}>Contact</MenuItem>
+          <MenuItem  leftIcon={<Home />}  containerElement={homeLink} onTouchTap={this.handleMenuTap}>Home</MenuItem>
+          <MenuItem  leftIcon={<Contact />} containerElement={contactLink} onTouchTap={this.handleMenuTap}>Contact</MenuItem>
         </LeftNav>
       </div>
     );

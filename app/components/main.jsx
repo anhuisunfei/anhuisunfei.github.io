@@ -1,7 +1,9 @@
 import React from 'react'
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
-import {AppLeftNavBar} from './AppLeftNavBar'
+import {AppLeftNavBar} from './AppLeftNavBar';
+import Home from './Home';
+import Contact from './Home';
 
 
 export class Main extends React.Component {
@@ -21,16 +23,20 @@ export class Main extends React.Component {
 	};
 
 	render(){
+		const { content } = this.props
+
 		return (
 			<div>
 				<AppBar
 	   				 title="anhuisunfei.github.io"
 	   				 iconClassNameRight="muidocs-icon-navigation-expand-more"
 	   				 onLeftIconButtonTouchTap={this.handleNavbarOpen}
-	  				  iconElementRight={<IconButton onClick={this.handleGitHubLink} iconClassName="muidocs-icon-custom-github" />} 
+	  				 iconElementRight={<IconButton onClick={this.handleGitHubLink} iconClassName="muidocs-icon-custom-github" />} 
 	  			/>
-	  			 <AppLeftNavBar open={this.state.navbaropen} handleNavbarOpen={this.handleNavbarOpen} handleNavbarClose={this.handleNavbarClose} />
-				<h1>Hello World!</h1>
+	  			 <AppLeftNavBar open={this.state.navbaropen} handleNavbarOpen={this.handleNavbarOpen} handleNavbarClose={this.handleNavbarClose} /> 
+				<div className="container">
+					{content || <Home />}
+				</div>
 			</div>	
 		);
 	}
