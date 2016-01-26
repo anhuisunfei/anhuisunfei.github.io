@@ -19,8 +19,8 @@ export  class AppLeftNavBar extends React.Component {
   };
 
   render() {
-    const homeLink=<Link to='Home' />;
-    const contactLink=<Link to="Contact" />;
+    const homeLink=<Link to='/Home' />;
+    const contactLink=<Link to="/Contact" />;
     return (
       <div> 
         <LeftNav
