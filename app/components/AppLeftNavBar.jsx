@@ -8,20 +8,38 @@ import {Link} from 'react-router';
 
 export  class AppLeftNavBar extends React.Component {
 
-  constructor(props) {
+  constructor(props,context) {
     super(props); 
   }
-
-  handleMenuTap=()=>{
+  static contextTypes = {
+    history: React.PropTypes.object.isRequired,
+  };
+  handleMenuTap=(link)=>{
+    
+    this.context.history.pushState(null,link)
     setTimeout(()=>{ 
       this.props.handleNavbarClose();
     },150);
   };
 
   render() {
-    const homeLink=<Link to='/Home' />;
-    const contactLink=<Link to="/Contact" />;
-    
+    let styles = {
+      header: {
+        cursor: 'pointer',
+        fontSize: '24px',
+        color: '#fff',
+        lineHeight: '64px',
+        fontWeight: '300',
+        backgroundColor: '#00bcd4',
+        paddingLeft: '24px',
+        paddingTop: '0px',
+        marginBottom: '8px',
+      },
+      selectedList: {
+        color: '#ff4081',
+        backgroundColor: 'rgba(0, 0, 0, 0.03)',
+      }
+    };
     return (
       <div> 
         <LeftNav
@@ -30,8 +48,8 @@ export  class AppLeftNavBar extends React.Component {
           open={this.props.open}
           onRequestChange={this.props.handleNavbarOpen}
         >
-          <MenuItem  leftIcon={<Home />}  containerElement={<Link to="/Home" />} onTouchTap={this.handleMenuTap}>Home</MenuItem>
-          <MenuItem leftIcon={<Contact />}  containerElement={<Link to="/Contact" />} onTouchTap={this.handleMenuTap}>Contact</MenuItem>
+          <MenuItem  leftIcon={<Home />}    onTouchTap={this.handleMenuTap.bind(this,'/Home')}>Home</MenuItem>
+          <MenuItem leftIcon={<Contact />}   onTouchTap={this.handleMenuTap.bind(this,'/Contact')}>Contact</MenuItem>
         </LeftNav>
       </div>
     );
