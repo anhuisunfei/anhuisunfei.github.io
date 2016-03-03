@@ -13,7 +13,6 @@ export default class Contact extends React.Component {
 			},
 			container: {
 				'margin': '0 auto',
-				width: '750px',
 				padding: '2em 1em',
 				'backgroundColor': '#f7f7f7'
 			},
